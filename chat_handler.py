@@ -1,81 +1,46 @@
+import json
+# import requests
 from telegram import BotCommand, Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 from openai_handler import Openai
 from utils.config_loader import load_config
 
-# Dados do produto: Simular o GET /product/:id
-PRODUCT_DATA = {
-    "product_name": "XYZ Smart Ultra HD TV",
-    "available_colors": ["Black", "White"],
-    "availability": "Yes",
-    "price": {
-        "basic_model": "$499",
-        "premium_model": "$1,299"
-    },
-    "technical_specifications": {
-        "screen_size": "50 inches, 60 inches, 70 inches",
-        "resolution": "Ultra HD",
-        "panel_type": "LED",
-        "refresh_rate": "60Hz",
-        "HDR": "HDR10",
-        "processor": "Smart Processor HD",
-        "operating_system": "XYZ OS",
-        "smart_features": [
-            "Voice control (Alexa, Google Assistant)",
-            "App store",
-            "Screen Mirroring",
-            "XYZ Smart Control",
-            "Parental controls"
-        ],
-        "ports": [
-            "3x HDMI 2.0",
-            "2x USB 2.0",
-            "1x Ethernet",
-            "1x Audio Out",
-            "1x RF input"
-        ],
-        "audio": {
-            "sound_system": "Dolby Digital",
-            "speakers": "2.0 Channel (40W)"
-        },
-        "dimensions": {
-            "with_stand": {
-                "height": "30.2 inches",
-                "width": "55.0 inches",
-                "depth": "11.5 inches"
-            },
-            "without_stand": {
-                "height": "28.7 inches",
-                "width": "55.0 inches",
-                "depth": "2.0 inches"
-            }
-        },
-        "weight": {
-            "with_stand": "38 lbs",
-            "without_stand": "33 lbs"
-        },
-        "energy_consumption": {
-            "power": "100W",
-            "annual_consumption": "130 kWh"
-        }
-    },
-    "features": [
-        "Adaptive Picture",
-        "Game Mode",
-        "Night Mode",
-        "Screen Saver",
-        "Auto Volume Control"
-    ],
-    "warranty": "2-year limited warranty",
-    "manufacturer": "XYZ Electronics",
-    "released_date": "2024-04-15"
-}
+'''
+
+# Função para buscar os dados do produto a partir de uma API
+def fetch_product_data():
+    # Aqui você substitui pela URL da sua API
+    api_url = "https://api.exemplo.com/product/1"  # Exemplo de URL
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()  # Verifica se ocorreu um erro na requisição
+        return response.json()  # Retorna os dados em formato JSON
+    except requests.exceptions.RequestException as e:
+        print(f"Erro ao buscar dados do produto: {e}")
+        return None
+
+'''
+    
+# Função para buscar os dados do produto a partir de um arquivo local para testes
+def fetch_product_data():
+    try:
+        # Abrindo e carregando os dados do arquivo product_example.json
+        with open("product_example.json", "r") as file:
+            product_data = json.load(file)  # Carrega os dados do JSON para um dicionário
+        return product_data
+    except Exception as e:
+        print(f"Erro ao ler o arquivo de dados do produto: {e}")
+        return None
 
 
 # Funções de comando
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_name = update.effective_user.first_name
-    await update.message.reply_text(f"Olá, {user_name}! Você tem alguma dúvida sobre o {PRODUCT_DATA['product_name']}?")
+    product_data = fetch_product_data()
+    if product_data:
+        user_name = update.effective_user.first_name
+        await update.message.reply_text(f"Olá, {user_name}! Você tem alguma dúvida sobre o {product_data['product_name']}?")
+    else:
+        await update.message.reply_text("Desculpe, não consegui obter os dados do produto no momento.")
 
 async def stop(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_name = update.effective_user.first_name
@@ -85,14 +50,20 @@ async def handle_question(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_question = update.message.text
     user_name = update.effective_user.first_name
     
-    # Criar instância da classe Openai
-    openai_handler = Openai()
+    # Buscar os dados do produto
+    product_data = fetch_product_data()
     
-    # Enviar a pergunta para a OpenAI
-    answer = openai_handler.send_message_to_openai(user_question, PRODUCT_DATA)
-    
-    # Enviar a resposta para o usuário no Telegram
-    await update.message.reply_text(answer)
+    if product_data:
+        # Criar instância da classe Openai
+        openai_handler = Openai()
+        
+        # Enviar a pergunta para a OpenAI
+        answer = openai_handler.send_message_to_openai(user_question, product_data)
+        
+        # Enviar a resposta para o usuário no Telegram
+        await update.message.reply_text(answer)
+    else:
+        await update.message.reply_text("Desculpe, não consegui obter os dados do produto no momento.")
 
 def setup_telegram_bot():
     BOT_TOKEN = load_config()

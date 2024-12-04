@@ -1,0 +1,66 @@
+{
+    "product_name": "Smart TV 4K XYZ",
+    "available_colors": ["Black", "White"],
+    "availability": "Yes",
+    "price": {
+        "basic_model": "$499",
+        "premium_model": "$1,299"
+    },
+    "technical_specifications": {
+        "screen_size": "50 inches, 60 inches, 70 inches",
+        "resolution": "Ultra HD",
+        "panel_type": "LED",
+        "refresh_rate": "60Hz",
+        "HDR": "HDR10",
+        "processor": "Smart Processor HD",
+        "operating_system": "XYZ OS",
+        "smart_features": [
+            "Voice control (Alexa, Google Assistant)",
+            "App store",
+            "Screen Mirroring",
+            "XYZ Smart Control",
+            "Parental controls"
+        ],
+        "ports": [
+            "3x HDMI 2.0",
+            "2x USB 2.0",
+            "1x Ethernet",
+            "1x Audio Out",
+            "1x RF input"
+        ],
+        "audio": {
+            "sound_system": "Dolby Digital",
+            "speakers": "2.0 Channel (40W)"
+        },
+        "dimensions": {
+            "with_stand": {
+                "height": "30.2 inches",
+                "width": "55.0 inches",
+                "depth": "11.5 inches"
+            },
+            "without_stand": {
+                "height": "28.7 inches",
+                "width": "55.0 inches",
+                "depth": "2.0 inches"
+            }
+        },
+        "weight": {
+            "with_stand": "38 lbs",
+            "without_stand": "33 lbs"
+        },
+        "energy_consumption": {
+            "power": "100W",
+            "annual_consumption": "130 kWh"
+        }
+    },
+    "features": [
+        "Adaptive Picture",
+        "Game Mode",
+        "Night Mode",
+        "Screen Saver",
+        "Auto Volume Control"
+    ],
+    "warranty": "2-year limited warranty",
+    "manufacturer": "XYZ Electronics",
+    "released_date": "2024-04-15"
+}
