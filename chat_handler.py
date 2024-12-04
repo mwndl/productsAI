@@ -5,73 +5,72 @@ from utils.config_loader import load_config
 
 # Dados do produto: Simular o GET /product/:id
 PRODUCT_DATA = {
-    "product_name": "Samsung QLED 4K Smart TV",
-    "available_colors": ["Black", "Silver"],
+    "product_name": "XYZ Smart Ultra HD TV",
+    "available_colors": ["Black", "White"],
     "availability": "Yes",
     "price": {
-        "basic_model": "$899",
-        "premium_model": "$2,199"
+        "basic_model": "$499",
+        "premium_model": "$1,299"
     },
     "technical_specifications": {
-        "screen_size": "55 inches, 65 inches, 75 inches",
-        "resolution": "4K UHD",
-        "panel_type": "QLED",
-        "refresh_rate": "120Hz",
-        "HDR": "HDR10+, Dolby Vision",
-        "processor": "Quantum Processor 4K",
-        "operating_system": "Tizen OS",
+        "screen_size": "50 inches, 60 inches, 70 inches",
+        "resolution": "Ultra HD",
+        "panel_type": "LED",
+        "refresh_rate": "60Hz",
+        "HDR": "HDR10",
+        "processor": "Smart Processor HD",
+        "operating_system": "XYZ OS",
         "smart_features": [
             "Voice control (Alexa, Google Assistant)",
-            "Smart Hub",
             "App store",
-            "AirPlay 2",
-            "Samsung SmartThings integration",
-            "Controle SolarCell voice command"
+            "Screen Mirroring",
+            "XYZ Smart Control",
+            "Parental controls"
         ],
         "ports": [
-            "4x HDMI 2.1",
-            "2x USB 3.0",
+            "3x HDMI 2.0",
+            "2x USB 2.0",
             "1x Ethernet",
-            "1x Optical Audio Out",
-            "1x RF input",
-            "1x Composite Video"
+            "1x Audio Out",
+            "1x RF input"
         ],
         "audio": {
-            "sound_system": "Dolby Atmos, DTS:X",
-            "speakers": "2.1 Channel (60W)"
+            "sound_system": "Dolby Digital",
+            "speakers": "2.0 Channel (40W)"
         },
         "dimensions": {
             "with_stand": {
-                "height": "34.5 inches",
-                "width": "57.3 inches",
-                "depth": "13.1 inches"
+                "height": "30.2 inches",
+                "width": "55.0 inches",
+                "depth": "11.5 inches"
             },
             "without_stand": {
-                "height": "32.6 inches",
-                "width": "57.3 inches",
-                "depth": "2.3 inches"
+                "height": "28.7 inches",
+                "width": "55.0 inches",
+                "depth": "2.0 inches"
             }
         },
         "weight": {
-            "with_stand": "45 lbs",
-            "without_stand": "39 lbs"
+            "with_stand": "38 lbs",
+            "without_stand": "33 lbs"
         },
         "energy_consumption": {
-            "power": "120W",
-            "annual_consumption": "150 kWh"
+            "power": "100W",
+            "annual_consumption": "130 kWh"
         }
     },
     "features": [
-        "Ambient Mode",
-        "Samsung One Connect Box",
         "Adaptive Picture",
-        "AI Upscaling",
-        "Game Mode"
+        "Game Mode",
+        "Night Mode",
+        "Screen Saver",
+        "Auto Volume Control"
     ],
-    "warranty": "1-year limited warranty",
-    "manufacturer": "Samsung Electronics",
-    "released_date": "2024-03-01"
+    "warranty": "2-year limited warranty",
+    "manufacturer": "XYZ Electronics",
+    "released_date": "2024-04-15"
 }
+
 
 # Funções de comando
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
