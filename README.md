@@ -2,7 +2,7 @@
 
 Este projeto é um **chatbot de vendas** que utiliza a **API do ChatGPT** para responder de forma personalizada às perguntas dos usuários. O chatbot foi adaptado para ser integrado com **Telegram** e pode ser facilmente adaptado para funcionar em sites de **marketplaces** ou lojas online.
 
-Quando o usuário abre a página de um produto, o chatbot pode responder automaticamente, oferecendo informações detalhadas sobre o produto e respondendo a dúvidas relacionadas. O chatbot é alimentado por dados do produto (exemplo de uma TV Samsung), mas pode ser configurado para qualquer tipo de produto.
+Quando o usuário abre a página de um produto, o chatbot pode responder automaticamente, oferecendo informações detalhadas sobre o produto e respondendo a dúvidas relacionadas. O bot recebe dados de um produto fictício (uma TV XYZ) para funcionar em modo de desenvolvimento, mas ele pode ser fácilmente configurado para buscar dados reais de um produto via API.
 
 ## Funcionalidades
 
